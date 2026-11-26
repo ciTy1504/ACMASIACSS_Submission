@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Defenses — MIND INCEPTION Defense Lab</title>
+<link rel="stylesheet" href="/static/style.css">
+<script>try{var p=new URLSearchParams(location.search).get('theme');var t=p||localStorage.getItem('milab_theme')||(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');if(p)localStorage.setItem('milab_theme',p);document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <a class="logo" href="/"><span class="mark">MI</span><span>MIND INCEPTION<small>Defense Lab</small></span></a>
+    <div class="snav-group">Dashboard</div>
+    <nav class="snav">
+      <a href="/overview"><span class="ic">◆</span>Overview</a>
+      <a href="/attack"><span class="ic">⚔</span>Attack</a>
+      <a href="/lab"><span class="ic">🛡</span>Defense Lab</a>
+      <a href="/benchmark"><span class="ic">📊</span>Benchmark</a>
+    </nav>
+    <div class="snav-group">Explore</div>
+    <nav class="snav">
+      <a href="/demo"><span class="ic">▦</span>Use Cases</a>
+      <a href="/defense" class="on"><span class="ic">▥</span>Defenses</a>
+    </nav>
+    <div class="snav-group">Settings</div>
+    <nav class="snav"><a href="/models"><span class="ic">⚙</span>Models</a></nav>
+    <div class="side-foot">
+      <button class="themebtn" id="mlTheme" title="Toggle light / dark"></button>
+      <span class="health small" id="health"></span>
+    </div>
+  </aside>
+  <div class="content">
+    <div class="topbar">
+      <div class="page-title">Defenses</div>
+      <span class="spacer"></span>
+    </div>
+<main>
+  <div class="card">
+    <h3>Defense methods under test</h3>
+    <p class="muted" style="margin:6px 0">Every defense MIND INCEPTION is evaluated against, grouped by
+    family, with pre-computed effectiveness. <b>ASR</b> = adversarial attack-success rate (attacker picks
+    the best trace placement — lower is better); <b>comment/print</b> break it down by placement;
+    <b>FP</b> = benign false-positive cost; <b>Utility</b> = detection accuracy on clean controls;
+    <b>Score</b> = (1−ASR)·(1−FP)·Utility.</p>
+    <div class="legend" id="legend" style="margin-top:6px"></div>
+    <div class="small dim" id="statsmeta" style="margin-top:8px"></div>
+  </div>
+
+  <div class="card" id="chartCard" style="margin-top:14px">
+    <h3>Attack success rate by defense (lower is better)</h3>
+    <div id="chart"></div>
+  </div>
+
+  <div class="card" style="margin-top:14px">
+    <div class="row"><h3>Side-by-side results</h3><span class="spacer"></span>
+      <button id="expCsv">Export CSV</button></div>
+    <div class="scroll" style="margin-top:8px"><table id="tbl"></table></div>
+  </div>
+
+  <div class="card" style="margin-top:14px">
+    <div class="row"><h3>How each defense works</h3>
+      <span class="muted small">click a method to see its mechanism diagram</span></div>
+    <div class="grid" style="grid-template-columns:270px 1fr;gap:14px;margin-top:10px">
+      <div id="defNames"></div>
+      <div id="defDetail"></div>
+    </div>
+  </div>
+</main>
+  </div>
+</div>
+
+
+<script src="/static/apikit.js"></script>
+<script src="/static/defense_methods.js"></script>
+<script src="/static/defense.js"></script>
+</body>
+</html>
